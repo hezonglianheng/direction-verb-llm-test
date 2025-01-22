@@ -6,6 +6,7 @@
 
 import config
 import requests
+from tqdm import tqdm
 import concurrent.futures
 from typing import Any
 import json
@@ -102,7 +103,7 @@ def call_model(model_name: str, items: list[dict[str, Any]]) -> list[dict[str, A
         list[dict[str, Any]]: 答案列表
     """
     results: list[dict[str, Any]] = []
-    for item in items:
+    for item in tqdm(items, desc=f"调用模型: {model_name}"):
         # 单次调用API
         question: str = item["question"]
         options: dict[str, str] = item["options"]
