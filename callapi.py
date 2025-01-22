@@ -111,7 +111,7 @@ def call_model(model_name: str, items: list[dict[str, Any]]) -> list[dict[str, A
         arranged_result = result_arrange(item, result)
         results.append(arranged_result)
         # 添加随机休眠
-        time.sleep(random.randint(.5, 1.5))
+        time.sleep(random.random())
     return results
 
 def main():
