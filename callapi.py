@@ -11,6 +11,7 @@ from typing import Any
 import json
 from pathlib import Path
 import time
+import random
 
 def call_api(model_name: str, question: str, options: dict[str, str]) -> dict[str, Any]:
     """对大模型API进行单次调用，对问题进行测试
@@ -50,7 +51,11 @@ def call_api(model_name: str, question: str, options: dict[str, str]) -> dict[st
     # 记录时间
     end_time = time.time()
     # 获取结果
-    result: dict[str, Any] = response.json()
+    # 改为使用try-except结构，避免出现错误时程序中断
+    try:
+        result: dict[str, Any] = response.json()
+    except:
+        result: dict[str, Any] = {}
     # 记录时间
     result[config.TIME] = end_time - start_time
     # 返回结果
@@ -104,6 +109,8 @@ def call_model(model_name: str, items: list[dict[str, Any]]) -> list[dict[str, A
         result = call_api(model_name, question, options)
         arranged_result = result_arrange(item, result)
         results.append(arranged_result)
+        # 添加随机休眠
+        time.sleep(random.randint(.5, 1.5))
     return results
 
 def main():
