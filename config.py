@@ -94,7 +94,7 @@ MODEL_NAMES = [
     "qwen2.5-72b-instruct", 
     "llama3.3-70b-instruct", 
     # "glm-4-plus", 
-    "deepseek-reasoner", 
-    # "deepseek-chat", 
+    # "deepseek-reasoner", 
+    "deepseek-chat", 
 ]
 res_dir = r"result"
