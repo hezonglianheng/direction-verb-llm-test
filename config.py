@@ -69,6 +69,9 @@ VERB = "verb"
 VERB_TYPE = "verb_type"
 NOUN_ROLE = "noun_role"
 NOUN_TYPE = "noun_type"
+RESPONSE = "response"
+EXTRACTED_ANSWER = "extracted_answer"
+TIME = "time"
 
 # 提问的问题
 ## 替换符
@@ -79,3 +82,19 @@ sentence_question = r"以下选项中语法、语义正确的是_____"
 meaning_question = r"以下选项中与上述文本意义相符的是_____"
 ## 以上选项均不满足题意
 not_satisfy = r"以上选项均不满足题意"
+
+# api文件
+api_file = r"config/api.txt"
+# 模型名称
+MODEL_NAMES = [
+    # "o1-preview", 
+    "gpt-4o", 
+    "claude-3-5-sonnet-20241022", 
+    # "gemini-2.0-flash-exp", 
+    "qwen2.5-72b-instruct", 
+    "llama3.3-70b-instruct", 
+    # "glm-4-plus", 
+    "deepseek-reasoner", 
+    # "deepseek-chat", 
+]
+res_dir = r"result"
