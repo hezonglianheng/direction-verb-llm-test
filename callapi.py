@@ -25,7 +25,7 @@ def call_api(model_name: str, question: str, options: dict[str, str]) -> dict[st
     Returns:
         dict: 答案
     """
-    url: str = "https://api.zhizengzeng.com/v1/chat/completions"
+    url: str = config.url # API地址
     # 读取api
     with open(config.api_file, "r", encoding="utf8") as f:
         api_key: str = f.read().strip()

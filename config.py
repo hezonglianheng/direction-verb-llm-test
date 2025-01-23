@@ -97,4 +97,9 @@ MODEL_NAMES = [
     # "deepseek-reasoner", 
     "deepseek-chat", 
 ]
+# API返回结果目录
 res_dir = r"result"
+# API调用的url
+url = "https://api.zhizengzeng.com/v1/chat/completions"
+# 提取结果的目录
+extracted_dir = r"extracted"
