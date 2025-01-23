@@ -13,6 +13,9 @@ import json
 import concurrent.futures
 
 PATTERN_STRINGS: list[str] = [
+    # 文本开头的字母
+    r"^([A-Z])\.",
+    r"\\boxed{([A-Z])}",
     r"最终答案.*?([A-Z])",
     r"正确答案.*?([A-Z])",
     r"符合.*?是.*?([A-Z])", 
@@ -37,8 +40,6 @@ PATTERN_STRINGS: list[str] = [
     r"([A-Z])\s*选项.*?恰当",
     r"([A-Z])\s*选项.*?合适",
     r"([A-Z])\s*是正确答案",
-    # 文本开头的字母
-    r"^([A-Z])\.",
 ]
 
 def answer_extract(response: str) -> list[str]:
@@ -58,7 +59,14 @@ def answer_extract(response: str) -> list[str]:
         if matches:
             answers.extend(matches)
             break
-    return list(set(answers))
+    answers = list(set(answers))
+    # 检查：如果answers中的前一个元素大于后一个元素，则截断答案
+    index = len(answers)
+    for i in range(1, len(answers)):
+        if answers[i] < answers[i - 1]:
+            index = i
+            break
+    return answers[:index]
 
 def model_results_extract(model_name: str) -> None:
     """从模型对应的结果中提取答案
