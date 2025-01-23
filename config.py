@@ -79,7 +79,7 @@ replace_symbol = r"[replace]"
 ## 提问的问题
 phrase_question = r"以下选项中符合语法且语义与“[replace]”相同的是_____"
 sentence_question = r"以下选项中语法、语义正确的是_____"
-meaning_question = r"以下选项中与上述文本意义相符的是_____"
+meaning_question = r"以下选项中与“[replace]”意思一样的是_____"
 ## 以上选项均不满足题意
 not_satisfy = r"以上选项均不满足题意"
 

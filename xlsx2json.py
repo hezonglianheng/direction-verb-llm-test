@@ -117,7 +117,7 @@ def meaning_generate(df: pd.DataFrame, name: str) -> list[dict]:
     for i in range(len(df)):
         row = df.iloc[i] # 获取第i行
         # 问题生成
-        question: str = config.meaning_question
+        question: str = config.meaning_question.replace(config.replace_symbol, row[config.origin_form])
         # 获得句子的表达和判断值
         sentences_pairs: list[tuple[str, bool]] = list(zip(row[columns], row[judge_columns]))
         # 问题信息
