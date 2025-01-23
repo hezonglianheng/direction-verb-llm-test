@@ -112,7 +112,9 @@ def call_model(model_name: str, items: list[dict[str, Any]]) -> list[dict[str, A
         results.append(arranged_result)
         # 添加随机休眠
         time.sleep(random.random())
-    return results
+    # return results
+    with open(Path(config.res_dir) / f"{model_name}.json", "w", encoding="utf8") as f:
+        json.dump(results, f, ensure_ascii=False, indent=4)
 
 def main():
     """主函数
@@ -123,13 +125,16 @@ def main():
     # 创建线程池
     with concurrent.futures.ThreadPoolExecutor() as executor:
         # 多线程调用
-        results_list = list(executor.map(call_model, config.MODEL_NAMES, [data]*len(config.MODEL_NAMES)))
+        for model_name in config.MODEL_NAMES:
+            executor.submit(call_model, model_name, data)
+    """
     # 转为字典
     result_dict: dict[str, list] = {model_name: results for model_name, results in zip(config.MODEL_NAMES, results_list)}
     # 保存结果
     for name, results in result_dict.items():
         with open(Path(config.res_dir) / f"{name}.json", "w", encoding="utf8") as f:
             json.dump(results, f, ensure_ascii=False, indent=4)
+    """
 
 if __name__ == "__main__":
     main()
