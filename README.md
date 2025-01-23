@@ -7,4 +7,7 @@
 
 ## 结果文件
 - [question.json](questions.json): 待测试的问题json文件
-- [result](result): 调用API的结果文件
+- [result](result): 调用API的结果文件夹
+
+## 其他文件
+- [requirements.txt](requirements.txt): Python库配置文件
