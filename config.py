@@ -72,6 +72,7 @@ NOUN_TYPE = "noun_type"
 RESPONSE = "response"
 EXTRACTED_ANSWER = "extracted_answer"
 TIME = "time"
+JUDGE = "judge"
 
 # 提问的问题
 ## 替换符
@@ -103,3 +104,6 @@ res_dir = r"result"
 url = "https://api.zhizengzeng.com/v1/chat/completions"
 # 提取结果的目录
 extracted_dir = r"extracted"
+
+# 结果文件
+RESULT_FILE = r"“上来”测试题模型结果.xlsx"
